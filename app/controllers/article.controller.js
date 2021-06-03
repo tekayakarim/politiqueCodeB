@@ -6,6 +6,8 @@ exports.ajouterArticle= (req, res, next) => {
     const article = new Article({
         ...req.body
     });
+    article.user=req.body.user;
+    
     article.save()
         .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
         .catch(error => res.status(400).json({ error }));

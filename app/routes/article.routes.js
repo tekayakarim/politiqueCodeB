@@ -9,14 +9,14 @@ module.exports = function(app) {
       next();
     });
   
-app.post('/ajouterArticle',controller.ajouterArticle);
+app.post('/article/ajouterArticle',controller.ajouterArticle);
 
-app.get('/recupererArticle/:id',controller.recupererArticle);
+app.get('/article/recupererArticle/:id',controller.recupererArticle);
 
-app.get('/recupererArticles',controller.recupererArticles);
+app.get('/article/recupererArticles',controller.recupererArticles);
 
-app.put('/modifierArtcile/:id',controller.modifierArtcile);
+app.put('/article/modifierArtcile/:id',controller.modifierArtcile);
 
-app.delete('/supprimerArticle/:id',controller.supprimerArticle);
+app.delete('/article/supprimerArticle/:id',controller.supprimerArticle);
 
 };
