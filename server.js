@@ -29,7 +29,7 @@ const Role = db.role;
 
 db.mongoose
   .connect(
- 'mongodb+srv://karim:1998@cluster0.oesrj.mongodb.net/try2?retryWrites=true&w=majority', {
+ 'mongodb+srv://karim:1998@cluster0.oesrj.mongodb.net/politique?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -69,16 +69,6 @@ function initial() {
         }
 
         console.log("added 'user' to roles collection");
-      });
-
-      new Role({
-        name: "moderator"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'moderator' to roles collection");
       });
 
       new Role({

@@ -8,7 +8,7 @@ const Article = mongoose.model(
         nomLivre: { type: String, required: true },
         dateSortieLivre: { type: Date, required: true, default: Date.now },
         nomAuteur: { type: String, required: true },
-        imageUrlAuteur: { type: String, required: true },
+        imageUrlAuteur: { type: Buffer, required: true },
         user:
          
             {
