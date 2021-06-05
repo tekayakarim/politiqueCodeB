@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+var bcrypt = require("bcryptjs");
 
 const app = express();
 
@@ -26,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./app/models");
 const Role = db.role;
+const User= db.user;
 
 db.mongoose
   .connect(
@@ -44,7 +45,7 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to Politique application." });
 });
 
 // routes
@@ -82,4 +83,31 @@ function initial() {
       });
     }
   });
+  User.estimatedDocumentCount((err, count) => {
+    if (!err && count === 0) {
+     var user = new User({
+        username:"admin",
+        email: "admin@gmail.com",
+        password: bcrypt.hashSync("admin", 8)
+      });
+ 
+
+    Role.findOne({ name: "admin" }, (err, role) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+  //  console.log(role);
+      user.roles = [role._id];
+      user.save(err => {
+        if (err) {
+        console.log(err);
+          return;
+        }
+
+       console.log( "admin  was registered successfully!" );
+      });
+    }); 
+  }
+   });
 }
