@@ -4,7 +4,8 @@
   "description": "node js ,express ,mongosse,jwt app for politique stuff",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "author": "Mr K-Scorpio",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.11"
+    "mongoose": "^5.12.11",
+    "nodemon": "^2.0.7"
   }
 }
