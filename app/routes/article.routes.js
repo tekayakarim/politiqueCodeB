@@ -1,5 +1,7 @@
 const controller = require("../controllers/article.controller");
 
+const storage = require('../helpers/storage');
+
 module.exports = function(app) {
     app.use(function(req, res, next) {
       res.header(
@@ -9,7 +11,7 @@ module.exports = function(app) {
       next();
     });
   
-app.post('/article/ajouterArticle',controller.ajouterArticle);
+app.post('/article/ajouterArticle',storage,controller.ajouterArticle);
 
 app.get('/article/recupererArticle/:id',controller.recupererArticle);
 

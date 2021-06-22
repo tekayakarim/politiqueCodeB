@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 var bcrypt = require("bcryptjs");
+const path = require('path');
 
 const app = express();
 
@@ -48,6 +49,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to Politique application." });
 });
 
+
+app.use('/images', express.static(path.join('images')));
 // routes
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
@@ -58,6 +61,8 @@ const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
+
 
 function initial() {
   Role.estimatedDocumentCount((err, count) => {

@@ -1,13 +1,17 @@
 const db = require("../models");
 const Article = db.article;
 
-exports.ajouterArticle= (req, res, next) => {
+exports.ajouterArticle=async (req, res, next) => {
     delete req.body._id;
     const article = new Article({
         ...req.body
     });
     article.user=req.body.user;
+
+    const imagePath = 'http://localhost:8000/images/' + req.file.filename;  
+   
     
+    article.imageUrlAuteur=imagePath;
     article.save()
         .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
         .catch(error => res.status(400).json({ error }));
