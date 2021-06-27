@@ -31,7 +31,7 @@ const User= db.user;
 
 db.mongoose
   .connect(
- 'mongodb+srv://karim:1998@cluster0.oesrj.mongodb.net/politique?retryWrites=true&w=majority', {
+ 'mongodb+srv://${process.env.USER}:${process.env.PASSWORD}.oesrj.mongodb.net/politique?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
